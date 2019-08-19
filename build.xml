@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="YKS_PuanHesaplama" default="default" basedir=".">
-    <description>Builds, tests, and runs the project YKS_PuanHesaplama.</description>
+<project name="YKS_PuanHesaplama2(Swing)" default="default" basedir=".">
+    <description>Builds, tests, and runs the project YKS_PuanHesaplama2(Swing).</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
@@ -58,7 +58,7 @@
 
     An example of overriding the target for project execution could look like this:
 
-        <target name="run" depends="YKS_PuanHesaplama-impl.jar">
+        <target name="run" depends="YKS_PuanHesaplama2(Swing)-impl.jar">
             <exec dir="bin" executable="launcher.exe">
                 <arg file="${dist.jar}"/>
             </exec>
