@@ -11,16 +11,18 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
     public AYTPuaniFrame() {
         initComponents();       
         sifirlamaIslemleri();
-        klavyeIslemleri();
-        
+        klavyeIslemleri();        
     }
     
-    private void sifirlamaIslemleri()
+    private void sifirlamaIslemleri() 
     {
         islemler.verileriSifirla(this.AYTpuanPanel); //tum verilerin baslangicta sifir gozukmesi saglandi
         
-        esitAgirlikBolumu.baslangicNetleri(this.edbNetField, this.tarih1NetField, this.cog1NetField, this.mat2NetField); 
+        esitAgirlikBolumu.baslangicNetleri(this.edbNetField, this.tarih1NetField, this.cog1NetField); 
         esitAgirlikBolumu.dogruYanlislariSifirla();
+        
+        matematikBolumu.baslangicNetleri(mat2NetField);
+        matematikBolumu.dogruYanlislariSifirla();
     }
     private void klavyeIslemleri()
     {
@@ -614,7 +616,7 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
 
     private void edbIslemleri()
     {
-        esitAgirlikBolumu.dogruYanlisAl(edbDogruField, edbYanlisField);
+        esitAgirlikBolumu.dogruYanlisGonder(edbDogruField, edbYanlisField);
         esitAgirlikBolumu.edbNetHesapla(edbNetField, uyariMesajiLabel);
     }
     private void edbDogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edbDogruFieldKeyReleased
@@ -627,7 +629,7 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
 
     private void tarih1Islemleri()
     {
-        esitAgirlikBolumu.dogruYanlisAl(tarih1DogruField, tarih1YanlisField);
+        esitAgirlikBolumu.dogruYanlisGonder(tarih1DogruField, tarih1YanlisField);
         esitAgirlikBolumu.tarih1NetHesapla(tarih1NetField, uyariMesajiLabel);
     }
     private void tarih1DogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tarih1DogruFieldKeyReleased
@@ -641,7 +643,7 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
     
     public void cog1Islemleri()
     {
-        esitAgirlikBolumu.dogruYanlisAl(cog1DogruField , cog1YanlisField);
+        esitAgirlikBolumu.dogruYanlisGonder(cog1DogruField , cog1YanlisField);
         esitAgirlikBolumu.cog1NetHesapla(cog1NetField, uyariMesajiLabel);
     }
     private void cog1DogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cog1DogruFieldKeyReleased

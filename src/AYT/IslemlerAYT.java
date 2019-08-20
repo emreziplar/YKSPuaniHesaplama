@@ -8,7 +8,45 @@ import javax.swing.JTextField;
 
 public class IslemlerAYT 
 {
+    private int dogru,yanlis;
+    public void dogruYanlisGonder(JTextField dogruField , JTextField yanlisField)
+    {
+        String dogruAlani = dogruField.getText();
+        String yanlisAlani = yanlisField.getText();
+        
+        if (!dogruAlani.equals("") && !yanlisAlani.equals(""))
+        {
+            dogru = Integer.valueOf(dogruAlani);
+            yanlis = Integer.valueOf(yanlisAlani);      
+        }
+        else if (!dogruAlani.equals("") &&  yanlisAlani.equals(""))
+        {
+            dogru = Integer.valueOf(dogruAlani);
+            yanlis = 0;            
+        }
+        else if (dogruAlani.equals("") && !yanlisAlani.equals(""))
+        {
+            dogru = 0;
+            yanlis = Integer.valueOf(yanlisAlani);           
+        }
+        else 
+        {
+            dogru = 0;
+            yanlis = 0;            
+        }        
+    }
 
+    public int getDogru() {
+        return dogru;
+    }
+
+
+    public int getYanlis() {
+        return yanlis;
+    }
+
+
+    
     
    public void verileriSifirla(JPanel AYTpuanPanel)
     {

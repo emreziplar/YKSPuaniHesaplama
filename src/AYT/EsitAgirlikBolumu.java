@@ -3,59 +3,41 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class EsitAgirlikBolumu 
+public class EsitAgirlikBolumu extends IslemlerAYT
 {
     private float edbNet;
     private float tarih1Net;
     private float cog1Net;
-    private float mat2Net;
     
-    public void baslangicNetleri(JTextField edbNetField,JTextField tarih1NetField,JTextField cog1NetField,JTextField mat2NetField)
+    public void baslangicNetleri(JTextField edbNetField,JTextField tarih1NetField,JTextField cog1NetField)
     { 
        //baslangic netleri olarak net kutucuklarinda yer alan 0'lar gelecek
        this.edbNet = Float.valueOf(edbNetField.getText());
        this.tarih1Net = Float.valueOf(tarih1NetField.getText());
        this.cog1Net = Float.valueOf(cog1NetField.getText());
-       this.mat2Net = Float.valueOf(mat2NetField.getText());
     }
     
     
     
-    private final int edbSoruSayisi = 24;
-    private final int tarih1SoruSayisi = 10;
-    private final int cog1SoruSayisi = 6;
+    private final int EDB_SORUSAYISI = 24;
+    private final int TARIH1_SORUSAYISI = 10;
+    private final int COG1_SORUSAYISI = 6;
     
-    private float dogru,yanlis;
+              
+    private int dogru;
+    private int yanlis;
     
-    public void dogruYanlisAl(JTextField dogruField , JTextField yanlisField)
-    {
-        String dogruAlani = dogruField.getText();
-        String yanlisAlani = yanlisField.getText();
-        
-        if (!dogruAlani.equals("") && !yanlisAlani.equals(""))
-        {
-            dogru = Float.valueOf(dogruAlani);
-            yanlis = Float.valueOf(yanlisAlani);      
-        }
-        else if (!dogruAlani.equals("") &&  yanlisAlani.equals(""))
-        {
-            dogru = Float.valueOf(dogruAlani);
-            yanlis = 0;            
-        }
-        else if (dogruAlani.equals("") && !yanlisAlani.equals(""))
-        {
-            dogru = 0;
-            yanlis = Float.valueOf(yanlisAlani);           
-        }
-        else 
-        {
-            dogru = 0;
-            yanlis = 0;            
-        }        
+    @Override
+    public void dogruYanlisGonder(JTextField dogruField, JTextField yanlisField) {
+        super.dogruYanlisGonder(dogruField, yanlisField); 
+       
+        this.dogru = super.getDogru();
+        this.yanlis = super.getYanlis();
     }
+      
+   
     
-    
-    private float edbDogruSayisi,edbYanlisSayisi;    
+    private int edbDogruSayisi,edbYanlisSayisi;        
     public void edbNetHesapla(JTextField edbNetField,JLabel uyariMesajiLabel)
     {
         edbDogruSayisi = this.dogru;
@@ -67,7 +49,7 @@ public class EsitAgirlikBolumu
         dogruYanlisKontrol(uyariMesajiLabel);
     }
     
-    private float tarih1DogruSayisi,tarih1YanlisSayisi;
+    private int tarih1DogruSayisi,tarih1YanlisSayisi;
     public void tarih1NetHesapla(JTextField tarih1NetField,JLabel uyariMesajiLabel)
     {
         tarih1DogruSayisi = this.dogru;
@@ -80,7 +62,7 @@ public class EsitAgirlikBolumu
     }
     
     
-    private float cog1DogruSayisi,cog1YanlisSayisi;
+    private int cog1DogruSayisi,cog1YanlisSayisi;
     public void cog1NetHesapla(JTextField cog1NetField,JLabel uyariMesajiLabel)
     {
         cog1DogruSayisi = this.dogru;
@@ -97,16 +79,27 @@ public class EsitAgirlikBolumu
     {
         this.dogru = 0;  
         this.yanlis = 0;       
+        
+        this.edbDogruSayisi = 0;
+        this.edbYanlisSayisi = 0;
+        
+        this.tarih1DogruSayisi = 0;
+        this.tarih1YanlisSayisi = 0;
+        
+        this.cog1DogruSayisi = 0;
+        this.cog1YanlisSayisi = 0;
     }
     
     public void dogruYanlisKontrol(JLabel uyariMesajiLabel)
     {
         String mesaj = "<html><b>UYARI:</b> Doğru ve Yanlış Sayıları Toplamı Soru Sayısını Geçemez</html>";
         
-        if((edbDogruSayisi+edbYanlisSayisi > this.edbSoruSayisi) || (tarih1DogruSayisi+tarih1YanlisSayisi > this.tarih1SoruSayisi)
-                || (cog1DogruSayisi+cog1YanlisSayisi > this.cog1SoruSayisi))
+        if((edbDogruSayisi+edbYanlisSayisi > this.EDB_SORUSAYISI) || (tarih1DogruSayisi+tarih1YanlisSayisi > this.TARIH1_SORUSAYISI)
+                || (cog1DogruSayisi+cog1YanlisSayisi > this.COG1_SORUSAYISI))
             uyariMesajiLabel.setText(mesaj);
         else 
-            uyariMesajiLabel.setText("");
+            uyariMesajiLabel.setText("");      
     }
+
+    
 }
