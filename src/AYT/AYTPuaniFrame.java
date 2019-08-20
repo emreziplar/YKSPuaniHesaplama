@@ -21,6 +21,9 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
         esitAgirlikBolumu.baslangicNetleri(this.edbNetField, this.tarih1NetField, this.cog1NetField); 
         esitAgirlikBolumu.dogruYanlislariSifirla();
         
+        fenBolumu.baslangicNetleri(fizikNetField, kimyaNetField, biyoNetField);
+        fenBolumu.dogruYanlislariSifirla();
+        
         matematikBolumu.baslangicNetleri(mat2NetField);
         matematikBolumu.dogruYanlislariSifirla();
     }
@@ -231,11 +234,23 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel32.setText("Fizik                                  14 Soru :");
 
+        fizikDogruField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fizikDogruFieldKeyReleased(evt);
+            }
+        });
+
         jLabel35.setFont(new java.awt.Font("Source Sans Pro", 0, 15)); // NOI18N
         jLabel35.setText("DOĞRU");
 
         jLabel36.setFont(new java.awt.Font("Source Sans Pro", 0, 15)); // NOI18N
         jLabel36.setText("YANLIŞ");
+
+        fizikYanlisField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fizikYanlisFieldKeyReleased(evt);
+            }
+        });
 
         fizikNetField.setEditable(false);
 
@@ -244,11 +259,35 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
 
         kimyaNetField.setEditable(false);
 
+        kimyaYanlisField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                kimyaYanlisFieldKeyReleased(evt);
+            }
+        });
+
+        kimyaDogruField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                kimyaDogruFieldKeyReleased(evt);
+            }
+        });
+
         jLabel38.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel38.setText("Kimya                             13 Soru :");
 
         jLabel39.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel39.setText("Biyoloji                           13 Soru :");
+
+        biyoDogruField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                biyoDogruFieldKeyReleased(evt);
+            }
+        });
+
+        biyoYanlisField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                biyoYanlisFieldKeyReleased(evt);
+            }
+        });
 
         biyoNetField.setEditable(false);
 
@@ -614,6 +653,7 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void edbIslemleri()
     {
         esitAgirlikBolumu.dogruYanlisGonder(edbDogruField, edbYanlisField);
@@ -653,7 +693,58 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
     private void cog1YanlisFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cog1YanlisFieldKeyReleased
         cog1Islemleri();
     }//GEN-LAST:event_cog1YanlisFieldKeyReleased
+
     
+    public void fizikIslemleri()
+    {
+        fenBolumu.dogruYanlisGonder(fizikDogruField, fizikYanlisField);
+        fenBolumu.fizikNetHesapla(fizikNetField, uyariMesajiLabel);
+    }
+    private void fizikDogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fizikDogruFieldKeyReleased
+        fizikIslemleri();
+    }//GEN-LAST:event_fizikDogruFieldKeyReleased
+
+    private void fizikYanlisFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fizikYanlisFieldKeyReleased
+        fizikIslemleri();
+    }//GEN-LAST:event_fizikYanlisFieldKeyReleased
+
+    
+    public void kimyaIslemleri()
+    {
+        fenBolumu.dogruYanlisGonder(kimyaDogruField, kimyaYanlisField);
+        fenBolumu.kimyaNetHesapla(kimyaNetField, uyariMesajiLabel);
+    }
+    private void kimyaDogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kimyaDogruFieldKeyReleased
+        kimyaIslemleri();
+    }//GEN-LAST:event_kimyaDogruFieldKeyReleased
+
+    private void kimyaYanlisFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kimyaYanlisFieldKeyReleased
+        kimyaIslemleri();
+    }//GEN-LAST:event_kimyaYanlisFieldKeyReleased
+
+    
+    public void biyoIslemleri()
+    {
+        fenBolumu.dogruYanlisGonder(biyoDogruField, biyoYanlisField);
+        fenBolumu.biyoNetHesapla(biyoNetField, uyariMesajiLabel);
+    }   
+    private void biyoDogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_biyoDogruFieldKeyReleased
+        biyoIslemleri();
+    }//GEN-LAST:event_biyoDogruFieldKeyReleased
+
+    private void biyoYanlisFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_biyoYanlisFieldKeyReleased
+        biyoIslemleri();
+    }//GEN-LAST:event_biyoYanlisFieldKeyReleased
+
+    
+    
+    
+    
+    
+    
+    
+    
+     
     
     
     public static void main(String args[]) {

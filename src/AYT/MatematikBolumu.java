@@ -42,10 +42,11 @@ public class MatematikBolumu extends IslemlerAYT
         else 
             uyariMesajiLabel.setText("");      
     }
-
+    
     public void dogruYanlislariSifirla()
     {
         this.mat2DogruSayisi = 0;
-        this.mat2YanlisSayisi = 0;        
+        this.mat2YanlisSayisi = 0;
     }
+
 }

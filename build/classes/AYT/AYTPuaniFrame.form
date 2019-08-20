@@ -706,9 +706,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fizikDogruField">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fizikDogruFieldKeyReleased"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel35">
           <Properties>
@@ -727,9 +724,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fizikYanlisField">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fizikYanlisFieldKeyReleased"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fizikNetField">
           <Properties>
@@ -750,14 +744,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="kimyaYanlisField">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kimyaYanlisFieldKeyReleased"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="kimyaDogruField">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kimyaDogruFieldKeyReleased"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel38">
           <Properties>
@@ -776,14 +764,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="biyoDogruField">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="biyoDogruFieldKeyReleased"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="biyoYanlisField">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="biyoYanlisFieldKeyReleased"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="biyoNetField">
           <Properties>

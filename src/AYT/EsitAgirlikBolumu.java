@@ -46,6 +46,7 @@ public class EsitAgirlikBolumu extends IslemlerAYT
         this.edbNet = edbDogruSayisi - (edbYanlisSayisi / 4.0f);
         edbNetField.setText(String.valueOf(edbNet));
         
+        
         dogruYanlisKontrol(uyariMesajiLabel);
     }
     
@@ -93,6 +94,7 @@ public class EsitAgirlikBolumu extends IslemlerAYT
     public void dogruYanlisKontrol(JLabel uyariMesajiLabel)
     {
         String mesaj = "<html><b>UYARI:</b> Doğru ve Yanlış Sayıları Toplamı Soru Sayısını Geçemez</html>";
+        
         
         if((edbDogruSayisi+edbYanlisSayisi > this.EDB_SORUSAYISI) || (tarih1DogruSayisi+tarih1YanlisSayisi > this.TARIH1_SORUSAYISI)
                 || (cog1DogruSayisi+cog1YanlisSayisi > this.COG1_SORUSAYISI))
