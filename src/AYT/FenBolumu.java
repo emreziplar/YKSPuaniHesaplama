@@ -90,14 +90,13 @@ public class FenBolumu extends IslemlerAYT
     
     public void dogruYanlisKontrol(JLabel uyariMesajiLabel)
     {
-        String mesaj = "<html><b>UYARI:</b> Doğru ve Yanlış Sayıları Toplamı Soru Sayısını Geçemez</html>";
-        
-        
         if((fizikDogruSayisi+fizikYanlisSayisi > this.FIZIK_SORUSAYISI) || (kimyaDogruSayisi+kimyaYanlisSayisi > this.KIMYA_SORUSAYISI)
                 || (biyoDogruSayisi+biyoYanlisSayisi > this.BIYO_SORUSAYISI))
-            uyariMesajiLabel.setText(mesaj);
+            uyariMesajiLabel.setText(super.uyariMesaji);
         else 
-            uyariMesajiLabel.setText("");      
+            uyariMesajiLabel.setText("");     
+        
+            
     }
             
 }

@@ -45,7 +45,6 @@ public class IslemlerAYT
         return yanlis;
     }
 
-
     
     
    public void verileriSifirla(JPanel AYTpuanPanel)
@@ -79,6 +78,8 @@ public class IslemlerAYT
        }
    }
     
-   
+   public String uyariMesaji = "<html><b>UYARI:</b> Doğru ve Yanlış Sayıları Toplamı Soru Sayısını Geçemez</html>";
+        
+      
    
 }

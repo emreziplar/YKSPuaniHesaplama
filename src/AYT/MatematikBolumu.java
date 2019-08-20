@@ -25,7 +25,7 @@ public class MatematikBolumu extends IslemlerAYT
     }
     
     
-    private void mat2NetHesapla(JTextField mat2NetFied,JLabel uyariMesajiLabel)
+    public void mat2NetHesapla(JTextField mat2NetFied,JLabel uyariMesajiLabel)
     {
         this.mat2Net = this.mat2DogruSayisi - (this.mat2YanlisSayisi / 4.0f);
         mat2NetFied.setText(String.valueOf(mat2Net));
@@ -35,10 +35,8 @@ public class MatematikBolumu extends IslemlerAYT
     
     public void dogruYanlisKontrol(JLabel uyariMesajiLabel)
     {
-        String mesaj = "<html><b>UYARI:</b> Doğru ve Yanlış Sayıları Toplamı Soru Sayısını Geçemez</html>";
-        
         if( (mat2DogruSayisi+mat2YanlisSayisi) > this.MAT2_SORUSAYISI )
-            uyariMesajiLabel.setText(mesaj);
+            uyariMesajiLabel.setText(super.uyariMesaji);
         else 
             uyariMesajiLabel.setText("");      
     }
