@@ -3,9 +3,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class MatematikBolumu extends IslemlerAYT
+public class MatematikBolumu extends AnaIslemler
 {
-    private float mat2Net;
+    public static float mat2Net;
     
     public void baslangicNetleri(JTextField mat2NetField) {
         this.mat2Net = Float.valueOf(mat2NetField.getText());

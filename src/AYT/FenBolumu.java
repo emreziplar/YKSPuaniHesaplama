@@ -3,11 +3,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class FenBolumu extends IslemlerAYT
+public class FenBolumu extends AnaIslemler
 {
-    private float fizikNet;
-    private float kimyaNet;
-    private float biyoNet;
+    public static float fizikNet;
+    public static float kimyaNet;
+    public static float biyoNet;
     
     public void baslangicNetleri(JTextField fizikNetField , JTextField kimyaNetField , JTextField biyoNetField)
     {

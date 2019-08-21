@@ -6,8 +6,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-public class IslemlerAYT 
-{
+public class AnaIslemler //superClass
+{        
+    public String uyariMesaji = "<html><b>UYARI:</b> Doğru ve Yanlış Sayıları Toplamı Soru Sayısını Geçemez</html>";
+    
+    
     private int dogru,yanlis;
     public void dogruYanlisGonder(JTextField dogruField , JTextField yanlisField)
     {
@@ -47,19 +50,23 @@ public class IslemlerAYT
 
     
     
-   public void verileriSifirla(JPanel AYTpuanPanel)
+   public void verileriSifirla(JPanel anaPanel)
     {
-        int deger = 0;
-        for (Component c:AYTpuanPanel.getComponents())
+        float deger = 0;
+        for (Component c:anaPanel.getComponents())
         {
-            if(c instanceof JTextField)
-                ((JTextField) c).setText(String.valueOf(deger));
+            if(c instanceof JTextField && !((JTextField) c).isEditable()) //sadece net kutucuklarina
+                ((JTextField) c).setText(String.valueOf(deger));         //degeri yolluyoruz
+            
+            if(c instanceof JTextField && ((JTextField) c).isEditable())
+                ((JTextField)c).setText(""); //kullanici temizle butonuna bastiginda dogru yanlis
+                                             //kutucuklarininda temizlenmesi icin icini bosaltiyoruz
         }
     }
    
-   public void allKeyTyped(JPanel AYTpuanPanel)
+   public void allKeyTyped(JPanel anaPanel)
    {
-       for(Component c:AYTpuanPanel.getComponents())
+       for(Component c:anaPanel.getComponents()) 
        {
            if(c instanceof JTextField)
            {
@@ -71,15 +78,11 @@ public class IslemlerAYT
                        
                        if(!Character.isDigit(k))
                            evt.consume();
-                   }
-                   
+                   }                   
                });
            }
        }
    }
-    
-   public String uyariMesaji = "<html><b>UYARI:</b> Doğru ve Yanlış Sayıları Toplamı Soru Sayısını Geçemez</html>";
-        
-      
+              
    
 }

@@ -1,74 +1,29 @@
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
-public class TYTPuaniFrame extends javax.swing.JFrame {
+public class TYTPuaniFrame extends javax.swing.JFrame{
 
-    private float trNet;
-    private float sosyalNet;
-    private float mat1Net;
-    private float fenNet;
+    AnaIslemler islemler = new AnaIslemler();
+    TYTBolumu tytBolumu = new TYTBolumu();
     
     public TYTPuaniFrame() {
         initComponents();
-        verileriSifirla();
-        temizNetleriGonder(); 
-        allKeyTyped();
+        sifirla();
     }
     
-    private void verileriSifirla() //frame ekraninin ilk acilis zamaninda butun kutucuklarin(panel uzerindeki) 
-    {                              //0 olarak gorunmesi icin yazilan method
-        int deger = 0;
-        for(Component c:TYTpuanPanel.getComponents())
-        {
-            if (c instanceof JTextField)
-               ((JTextField)c).setText(String.valueOf(deger));
-        }     
+    private void sifirla() {
+        
+        islemler.verileriSifirla(TYTpuanPanel);
+        
+        tytBolumu.baslangicNetleri(trNetField, sosyalNetField, mat1NetField, fenNetField);
+        tytBolumu.dogruYanlislariSifirla();
+        
+        uyariMesaji.setText("");
     }
     
-    private void allKeyTyped() //Butun textfield'lere sadece sayi girilebilmesi icin yazilan method
-    {                          //(TYTpuanPanel'de olan textfieldlar)
-         for(Component c:TYTpuanPanel.getComponents())
-        {
-            if(c instanceof JTextField)
-            {
-                c.addKeyListener(new KeyAdapter() 
-                {
-                    @Override
-                    public void keyTyped(KeyEvent evt)
-                    {
-                        char k = evt.getKeyChar();
-                        
-                        if(!Character.isDigit(k))
-                            evt.consume();
-                    }
-                });
-            }
-        }
-    }
-    
-    private void temizNetleriGonder() //baslangicta netlerin hepsine 0'i atamak icin yazdigimiz method
-    {
-        this.trNet = Float.valueOf(trNetField.getText());
-        this.sosyalNet = Float.valueOf(sosyalNetField.getText());
-        this.mat1Net = Float.valueOf(mat1NetField.getText());
-        this.fenNet = Float.valueOf(fenNetField.getText());
-    }
-    
-    private void dogruYanlislariSifirla() //temizle butonuna basildiginda kullanilacak
-    {
-        this.trDogru=0;
-        this.trYanlis=0;
-        this.sosyalDogru=0;
-        this.sosyalYanlis=0;
-        this.mat1Dogru=0;
-        this.mat1Yanlis=0;
-        this.fenDogru=0;
-        this.fenYanlis=0;
+    private void klavyeIslemleri() {
+        islemler.allKeyTyped(TYTpuanPanel);
     }
     
     @SuppressWarnings("unchecked")
@@ -101,6 +56,9 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
         uyariMesaji = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("TYT Hesaplama Ekranı");
+        setBounds(new java.awt.Rectangle(480, 280, 0, 0));
+        setResizable(false);
 
         TYTpuanPanel.setBackground(new java.awt.Color(255, 255, 255));
         TYTpuanPanel.setForeground(new java.awt.Color(153, 153, 0));
@@ -179,7 +137,7 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
         jLabel12.setText("NET");
 
         TYTEkleButton.setBackground(new java.awt.Color(255, 153, 153));
-        TYTEkleButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        TYTEkleButton.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
         TYTEkleButton.setText("TYT Puanını Ekle");
         TYTEkleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TYTEkleButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,8 +155,8 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
         });
 
         temizleButton.setBackground(new java.awt.Color(153, 153, 255));
-        temizleButton.setFont(new java.awt.Font("Source Sans Pro", 0, 17)); // NOI18N
-        temizleButton.setText("TEMİZLE");
+        temizleButton.setFont(new java.awt.Font("Source Sans Pro", 1, 17)); // NOI18N
+        temizleButton.setText("Temizle");
         temizleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         temizleButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -257,23 +215,21 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
                             .addComponent(trYanlisField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(57, 57, 57)
-                        .addGroup(TYTpuanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(TYTpuanPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(237, 237, 237))
+                        .addGroup(TYTpuanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(TYTpuanPanelLayout.createSequentialGroup()
                                 .addGroup(TYTpuanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(trNetField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fenNetField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sosyalNetField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(mat1NetField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addGroup(TYTpuanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TYTEkleButton)
-                                    .addGroup(TYTpuanPanelLayout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(temizleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(25, 25, 25))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TYTpuanPanelLayout.createSequentialGroup()
+                                        .addComponent(temizleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30))))
+                            .addComponent(jLabel12))
+                        .addGap(18, 18, 18))
                     .addGroup(TYTpuanPanelLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -333,7 +289,7 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
                         .addComponent(TYTEkleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(temizleButton)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -346,11 +302,9 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
+            .addGap(0, 318, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(TYTpuanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(TYTpuanPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -364,58 +318,22 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
     .
     .   
     */   
-    private final int trSoruSayisi = 40;
-    private final int sosyalSoruSayisi = 20;
-    private final int mat1SoruSayisi = 40;
-    private final int fenSoruSayisi = 20;
+    
 
     /*
     TURKCE
     */
-    private float trDogru,trYanlis;   
-    private void trDogruYanlisIslemleri()
+    private void trIslemleri()
     {
-       String trDogruAlani = this.trDogruField.getText();
-       String trYanlisAlani = this.trYanlisField.getText();  
-       
-       if (!trDogruAlani.equals("") && !trYanlisAlani.equals(""))
-        {
-            trDogru = Float.valueOf(trDogruAlani);
-            trYanlis = Float.valueOf(trYanlisAlani);      
-        }
-        else if (!trDogruAlani.equals("") &&  trYanlisAlani.equals(""))
-        {
-            trDogru = Float.valueOf(trDogruAlani);
-            trYanlis = 0;            
-        }
-        else if (trDogruAlani.equals("") && !trYanlisAlani.equals(""))
-        {
-            trDogru = 0;
-            trYanlis = Float.valueOf(trYanlisAlani);           
-        }
-        else 
-        {
-            trDogru = 0;
-            trYanlis = 0;            
-        }        
+        tytBolumu.dogruYanlisGonder(trDogruField, trYanlisField);
+        tytBolumu.trNetHesapla(trNetField, uyariMesaji);
     }
-    
-    private void trNetHesapla()
-    {    
-        this.trNet = trDogru - (trYanlis / 4.0f);        
-        trNetField.setText(String.valueOf(this.trNet));    
-        
-        dogruYanlisKontrol();
-    }  
-    
     private void trYanlisFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trYanlisFieldKeyReleased
-        trDogruYanlisIslemleri();         
-        trNetHesapla();         
+       trIslemleri();
     }//GEN-LAST:event_trYanlisFieldKeyReleased
     
     private void trDogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trDogruFieldKeyReleased
-        trDogruYanlisIslemleri();    
-        trNetHesapla();
+       trIslemleri();
     }//GEN-LAST:event_trDogruFieldKeyReleased
     /*
     .
@@ -424,50 +342,17 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
     /*
     SOSYAL BILIMLER
     */
-    private float sosyalDogru,sosyalYanlis;             
-    private void sosyalDogruYanlisIslemleri()
+    private void sosyalIslemleri()
     {
-        String sosyalDogruAlani = this.sosyalDogruField.getText();
-        String sosyalYanlisAlani = this.sosyalYanlisField.getText();     
-        
-        if (!sosyalDogruAlani.equals("") && !sosyalYanlisAlani.equals(""))
-        {
-            sosyalDogru = Float.valueOf(sosyalDogruAlani);
-            sosyalYanlis = Float.valueOf(sosyalYanlisAlani);      
-        }
-        else if (!sosyalDogruAlani.equals("") &&  sosyalYanlisAlani.equals(""))
-        {
-            sosyalDogru = Float.valueOf(sosyalDogruAlani);
-            sosyalYanlis = 0;            
-        }
-        else if (sosyalDogruAlani.equals("") && !sosyalYanlisAlani.equals(""))
-        {
-            sosyalDogru = 0;
-            sosyalYanlis = Float.valueOf(sosyalYanlisAlani);           
-        }
-        else 
-        {
-            sosyalDogru = 0;
-            sosyalYanlis = 0;            
-        }              
+        tytBolumu.dogruYanlisGonder(sosyalDogruField, sosyalYanlisField);
+        tytBolumu.sosyalNetHesapla(sosyalNetField, uyariMesaji);
     }
-    
-    private void sosyalNetHesapla()
-    {        
-        this.sosyalNet = sosyalDogru - (sosyalYanlis / 4.0f);
-        sosyalNetField.setText(String.valueOf(this.sosyalNet));
-        
-        dogruYanlisKontrol();
-    }
-    
     private void sosyalDogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sosyalDogruFieldKeyReleased
-        sosyalDogruYanlisIslemleri();
-        sosyalNetHesapla();
+        sosyalIslemleri();
     }//GEN-LAST:event_sosyalDogruFieldKeyReleased
 
     private void sosyalYanlisFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sosyalYanlisFieldKeyReleased
-        sosyalDogruYanlisIslemleri();
-        sosyalNetHesapla();
+        sosyalIslemleri();
     }//GEN-LAST:event_sosyalYanlisFieldKeyReleased
     /*
     .
@@ -476,132 +361,41 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
     /*
     MATEMATIK
     */
-    private float mat1Dogru,mat1Yanlis;
-    private void mat1DogruYanlisIslemleri()
+    private void mat1Islemleri()
     {
-        String mat1DogruAlani = this.mat1DogruField.getText();
-        String mat1YanlisAlani = this.mat1YanlisField.getText(); 
-        
-        if (!mat1DogruAlani.equals("") && !mat1YanlisAlani.equals(""))
-        {
-            mat1Dogru = Float.valueOf(mat1DogruAlani);
-            mat1Yanlis = Float.valueOf(mat1YanlisAlani);      
-        }
-        else if (!mat1DogruAlani.equals("") &&  mat1YanlisAlani.equals(""))
-        {
-            mat1Dogru = Float.valueOf(mat1DogruAlani);
-            mat1Yanlis = 0;            
-        }
-        else if (mat1DogruAlani.equals("") && !mat1YanlisAlani.equals(""))
-        {
-            mat1Dogru = 0;
-            mat1Yanlis = Float.valueOf(mat1YanlisAlani);           
-        }
-        else 
-        {
-            mat1Dogru = 0;
-            mat1Yanlis = 0;            
-        }          
+        tytBolumu.dogruYanlisGonder(mat1DogruField, mat1YanlisField);
+        tytBolumu.mat1NetHesapla(mat1NetField, uyariMesaji);
     }
-    
-    private void mat1NetHesapla()
-    {
-       this.mat1Net = mat1Dogru - (mat1Yanlis / 4.0f);
-       mat1NetField.setText(String.valueOf(this.mat1Net));
-       
-       dogruYanlisKontrol();
-    }
-    
     private void mat1DogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mat1DogruFieldKeyReleased
-        mat1DogruYanlisIslemleri();
-        mat1NetHesapla();
+        mat1Islemleri();
     }//GEN-LAST:event_mat1DogruFieldKeyReleased
 
     private void mat1YanlisFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mat1YanlisFieldKeyReleased
-        mat1DogruYanlisIslemleri();
-        mat1NetHesapla();
+        mat1Islemleri();
     }//GEN-LAST:event_mat1YanlisFieldKeyReleased
     /*
     .
     */
     
+    
     /*
     FEN BILIMLERI
     */
-    private float fenDogru,fenYanlis;
-    private void fenDogruYanlisIslemleri()
+    private void fenIslemleri()
     {
-        String fenDogruAlani = this.fenDogruField.getText();
-        String fenYanlisAlani = this.fenYanlisField.getText(); 
-        
-        if (!fenDogruAlani.equals("") && !fenYanlisAlani.equals(""))
-        {
-            fenDogru = Float.valueOf(fenDogruAlani);
-            fenYanlis = Float.valueOf(fenYanlisAlani);      
-        }
-        else if (!fenDogruAlani.equals("") &&  fenYanlisAlani.equals(""))
-        {
-            fenDogru = Float.valueOf(fenDogruAlani);
-            fenYanlis = 0;            
-        }
-        else if (fenDogruAlani.equals("") && !fenYanlisAlani.equals(""))
-        {
-            fenDogru = 0;
-            fenYanlis = Float.valueOf(fenYanlisAlani);           
-        }
-        else 
-        {
-            fenDogru = 0;
-            fenYanlis = 0;            
-        }          
+        tytBolumu.dogruYanlisGonder(fenDogruField, fenYanlisField);
+        tytBolumu.fenNetHesapla(fenNetField, uyariMesaji);
     }
-    
-    private void fenNetHesapla()
-    {
-        this.fenNet = fenDogru - (fenYanlis / 4.0f);
-        fenNetField.setText(String.valueOf(this.fenNet));
-        
-        dogruYanlisKontrol(); 
-    }
-    
     private void fenDogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fenDogruFieldKeyReleased
-        fenDogruYanlisIslemleri();
-        fenNetHesapla();
+        fenIslemleri();
     }//GEN-LAST:event_fenDogruFieldKeyReleased
 
     private void fenYanlisFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fenYanlisFieldKeyReleased
-        fenDogruYanlisIslemleri();
-        fenNetHesapla();
+        fenIslemleri();
     }//GEN-LAST:event_fenYanlisFieldKeyReleased
     /*
     .
     */
-    
-    /*
-    UYARI MESAJI
-    */
-    private void dogruYanlisKontrol()
-    {
-        String mesaj = "<html><b>UYARI:</b> Doğru ve Yanlış Sayıları Toplamı Soru Sayısını Geçemez</html>";
-        
-        if( (trDogru+trYanlis) > this.trSoruSayisi || (sosyalDogru+sosyalYanlis) > this.sosyalSoruSayisi //Dogru yanlis sayilarinin toplamı 
-            || (mat1Dogru+mat1Yanlis) > this.mat1SoruSayisi || (fenDogru+fenYanlis) > this.fenSoruSayisi) //herhangi birinin soru sayisini geciyorsa
-        {
-            uyariMesaji.setText(mesaj); //mesajimiz gorunsun
-        }
-        else 
-            uyariMesaji.setText(""); //mesaj kutumuz bos olsun
-    }
-    /*
-    .
-    */
-    
-    /*
-    DOGRU YANLIS HESAPLAMALARININ SONU
-    .
-    .   
-    */
-    
     
     
     /*
@@ -623,9 +417,9 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TYTEkleButtonActionPerformed
 
     private void TYTEkleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TYTEkleButtonMouseEntered
-
+                                                                           //uzerine gelindiginde
         this.tytEkleButtonOriginalBgColor = TYTEkleButton.getBackground(); //uzerine gelinmeden onceki(orijinal) rengini aliyoruz
-        TYTEkleButton.setBackground(Color.yellow);  //rengini sari yapiyoruz
+        TYTEkleButton.setBackground(Color.yellow);  //daha sonra rengini sari yapiyoruz
         
     }//GEN-LAST:event_TYTEkleButtonMouseEntered
 
@@ -652,11 +446,7 @@ public class TYTPuaniFrame extends javax.swing.JFrame {
         int operation = JOptionPane.showConfirmDialog(this, "Tüm Değerler Sıfırlanacak.\nOnaylıyor musun?", "UYARI", optionType);
         
         if(operation == optionType)
-        {
-           verileriSifirla();
-           dogruYanlislariSifirla();
-           uyariMesaji.setText("");
-        }        
+           sifirla();     
     }//GEN-LAST:event_temizleButtonActionPerformed
 
     private void temizleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_temizleButtonMouseEntered

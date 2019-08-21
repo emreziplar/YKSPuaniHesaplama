@@ -4,9 +4,12 @@ import javax.swing.JOptionPane;
 
 public class OBPFrame extends javax.swing.JFrame {
    
-    private float obp;
-    private Color obpEkleButtonOriginalBgColor;
+    public static float obp;
 
+    public float getObp() {
+        return obp;
+    }
+   
     
     public OBPFrame() {
         initComponents();     
@@ -150,13 +153,14 @@ public class OBPFrame extends javax.swing.JFrame {
       
         String diplomaNotuText = diplomaNotuField.getText();
         
-        if(!diplomaNotuText.equals("") && diplomaNotuText.charAt(0) != '.') //Eger Diploma Notu Alanimizin ici bos degilse ve ilk karakteri nokta degilse 
-        {
+        if(!diplomaNotuText.equals("") && diplomaNotuText.charAt(0) != '.') //Eger Diploma Notu Alanimizin ici bos degilse 
+        {                                                                   //ve ilk karakteri nokta degilse 
             float diplomaNotu = Float.valueOf(diplomaNotuText);
 
-            if(diplomaNotu > 100) diplomaNotu=100;
+            if(diplomaNotu > 100) 
+                diplomaNotu=100;
 
-            this.obp = (diplomaNotu*5) * 0.12f;
+            this.obp = (diplomaNotu*5) * 0.12f; //basari puani hesaplama
             basariPuaniField.setText(String.valueOf(this.obp));            
         }
         else
@@ -187,7 +191,8 @@ public class OBPFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_obpEkleButtonActionPerformed
-
+      
+    private Color obpEkleButtonOriginalBgColor;
     private void obpEkleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_obpEkleButtonMouseExited
 
         obpEkleButton.setBackground(this.obpEkleButtonOriginalBgColor);

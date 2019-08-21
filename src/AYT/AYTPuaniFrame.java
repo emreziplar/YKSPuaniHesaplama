@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class AYTPuaniFrame extends javax.swing.JFrame {
 
-    private final IslemlerAYT islemler = new IslemlerAYT();
+    private final AnaIslemler islemler = new AnaIslemler();
     private final EsitAgirlikBolumu esitAgirlikBolumu = new EsitAgirlikBolumu();
     private final SozelBolumu sozelBolumu = new SozelBolumu();
     private final MatematikBolumu matematikBolumu = new MatematikBolumu();
@@ -123,6 +123,8 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AYT Hesaplama Ekranı");
+        setBounds(new java.awt.Rectangle(400, 210, 0, 0));
+        setResizable(false);
 
         AYTpuanPanel.setBackground(new java.awt.Color(255, 255, 255));
         AYTpuanPanel.setForeground(new java.awt.Color(0, 0, 153));
@@ -912,6 +914,8 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
         mat2Islemleri();
     }//GEN-LAST:event_mat2YanlisFieldKeyReleased
 
+    
+    
     
     private boolean uyariMesajiKontrol()
     {

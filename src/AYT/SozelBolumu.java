@@ -3,7 +3,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class SozelBolumu extends IslemlerAYT
+public class SozelBolumu extends AnaIslemler
 {
     private float tarih2Net;
     private float cog2Net;
