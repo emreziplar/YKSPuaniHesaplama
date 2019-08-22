@@ -5,8 +5,12 @@ public class SonuclarFrame extends javax.swing.JFrame {
     
     public SonuclarFrame() {
         initComponents();
+        
         tytAlanlariGonder();
         sayAlanlariGonder();
+        eAgirlikAlanlariGonder();
+        sozelAlanlariGonder();
+        dilAlaniGonder();
     }
     
     private void tytAlanlariGonder() {
@@ -15,6 +19,18 @@ public class SonuclarFrame extends javax.swing.JFrame {
     
     private void sayAlanlariGonder() {
         puanHesaplari.sayPuanHesapla(sayHamPuanField, sayYerPuanField);
+    }
+    
+    private void eAgirlikAlanlariGonder() {
+        puanHesaplari.eAgirlikPuanHesapla(eAgirlikHamPuanField, eAgirlikYerPuanField);
+    }
+    
+    private void sozelAlanlariGonder() {
+        puanHesaplari.sozelPuanHesapla(sozelHamPuanField, sozelYerPuanField);
+    }
+    
+    private void dilAlaniGonder() {
+        puanHesaplari.dilPuanHesapla(dilHamPuanField, dilYerPuanField);
     }
     
     
