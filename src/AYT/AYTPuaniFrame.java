@@ -889,7 +889,7 @@ public class AYTPuaniFrame extends javax.swing.JFrame {
     public void dinIslemleri()
     {
         sozelBolumu.dogruYanlisGonder(dinDogruField, dinYanlisField);
-        sozelBolumu.tarih2NetHesapla(dinNetField, uyariMesajiLabel3);
+        sozelBolumu.dinNetHesapla(dinNetField, uyariMesajiLabel3);
     }
     private void dinDogruFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dinDogruFieldKeyReleased
         dinIslemleri();

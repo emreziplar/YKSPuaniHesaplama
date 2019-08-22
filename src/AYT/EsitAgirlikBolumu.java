@@ -5,9 +5,9 @@ import javax.swing.JTextField;
 
 public class EsitAgirlikBolumu extends AnaIslemler
 {
-    private float edbNet;
-    private float tarih1Net;
-    private float cog1Net;
+    public static float edbNet;
+    public static float tarih1Net;
+    public static float cog1Net;
     
     public void baslangicNetleri(JTextField edbNetField,JTextField tarih1NetField,JTextField cog1NetField)
     { 

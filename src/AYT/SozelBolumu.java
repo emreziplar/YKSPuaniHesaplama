@@ -5,10 +5,10 @@ import javax.swing.JTextField;
 
 public class SozelBolumu extends AnaIslemler
 {
-    private float tarih2Net;
-    private float cog2Net;
-    private float felsefeNet;
-    private float dinNet;
+    public static float tarih2Net;
+    public static float cog2Net;
+    public static float felsefeNet;
+    public static float dinNet;
     
     public void baslangicNetleri(JTextField tarih2NetField, JTextField cog2NetField, JTextField felsefeNetField, JTextField dinNetField)
     {
@@ -78,6 +78,7 @@ public class SozelBolumu extends AnaIslemler
         dinYanlisSayisi = this.yanlis;
         
         this.dinNet = dinDogruSayisi - (dinYanlisSayisi / 4.0f);
+        dinNetField.setText(String.valueOf(dinNet));
         
         dogruYanlisKontrol(uyariMesajiLabel);
     }
