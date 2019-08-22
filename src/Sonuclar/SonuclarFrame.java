@@ -1,4 +1,7 @@
 
+import java.awt.Color;
+
+
 public class SonuclarFrame extends javax.swing.JFrame {
     
     PuanHesaplari puanHesaplari = new PuanHesaplari();
@@ -68,8 +71,11 @@ public class SonuclarFrame extends javax.swing.JFrame {
         dilHamPuanField = new javax.swing.JTextField();
         dilYerPuanField = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        tekrarHesaplaButton = new javax.swing.JButton();
+        cikisYapButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sonuc Ekrani");
         setBounds(new java.awt.Rectangle(600, 150, 0, 0));
         setResizable(false);
 
@@ -86,7 +92,7 @@ public class SonuclarFrame extends javax.swing.JFrame {
         jLabel3.setText("YERLEŞTİRME");
 
         jLabel5.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel5.setForeground(new java.awt.Color(102, 0, 102));
         jLabel5.setText("PUAN");
 
         tytHamPuanField.setEditable(false);
@@ -146,7 +152,7 @@ public class SonuclarFrame extends javax.swing.JFrame {
         sayYerPuanField.setEditable(false);
 
         jLabel6.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel6.setForeground(new java.awt.Color(102, 0, 102));
         jLabel6.setText("SAY");
 
         jLabel4.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
@@ -165,7 +171,7 @@ public class SonuclarFrame extends javax.swing.JFrame {
         jLabel1.setText("YKS PUANLARINIZ");
 
         jLabel9.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel9.setForeground(new java.awt.Color(102, 0, 102));
         jLabel9.setText("EA");
 
         jLabel10.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
@@ -181,7 +187,7 @@ public class SonuclarFrame extends javax.swing.JFrame {
         jLabel11.setText("YERLEŞTİRME");
 
         jLabel12.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel12.setForeground(new java.awt.Color(102, 0, 102));
         jLabel12.setText("SOZ");
 
         jLabel13.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
@@ -197,7 +203,7 @@ public class SonuclarFrame extends javax.swing.JFrame {
         jLabel14.setText("YERLEŞTİRME");
 
         jLabel15.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel15.setForeground(new java.awt.Color(102, 0, 102));
         jLabel15.setText("DİL");
 
         jLabel16.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
@@ -211,6 +217,42 @@ public class SonuclarFrame extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 51, 255));
         jLabel17.setText("YERLEŞTİRME");
+
+        tekrarHesaplaButton.setBackground(new java.awt.Color(0, 153, 204));
+        tekrarHesaplaButton.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
+        tekrarHesaplaButton.setText("Tekrar Hesapla");
+        tekrarHesaplaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tekrarHesaplaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tekrarHesaplaButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tekrarHesaplaButtonMouseExited(evt);
+            }
+        });
+        tekrarHesaplaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tekrarHesaplaButtonActionPerformed(evt);
+            }
+        });
+
+        cikisYapButton.setBackground(new java.awt.Color(255, 0, 0));
+        cikisYapButton.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
+        cikisYapButton.setText("Çıkış Yap");
+        cikisYapButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cikisYapButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cikisYapButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cikisYapButtonMouseExited(evt);
+            }
+        });
+        cikisYapButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cikisYapButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout yksSonuclarPanelLayout = new javax.swing.GroupLayout(yksSonuclarPanel);
         yksSonuclarPanel.setLayout(yksSonuclarPanelLayout);
@@ -280,17 +322,26 @@ public class SonuclarFrame extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, yksSonuclarPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addGap(14, 14, 14)))))))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, yksSonuclarPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(yksSonuclarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, yksSonuclarPanelLayout.createSequentialGroup()
+                        .addComponent(tekrarHesaplaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(130, 130, 130))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, yksSonuclarPanelLayout.createSequentialGroup()
+                        .addComponent(cikisYapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(156, 156, 156))))
         );
         yksSonuclarPanelLayout.setVerticalGroup(
             yksSonuclarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(yksSonuclarPanelLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addGroup(yksSonuclarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(yksSonuclarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sayHamPuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sayYerPuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,7 +350,7 @@ public class SonuclarFrame extends javax.swing.JFrame {
                 .addGroup(yksSonuclarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(yksSonuclarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eAgirlikHamPuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eAgirlikYerPuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,7 +359,7 @@ public class SonuclarFrame extends javax.swing.JFrame {
                 .addGroup(yksSonuclarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(yksSonuclarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sozelHamPuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sozelYerPuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,23 +368,29 @@ public class SonuclarFrame extends javax.swing.JFrame {
                 .addGroup(yksSonuclarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(yksSonuclarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dilHamPuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dilYerPuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addGap(99, 99, 99))
+                .addGap(43, 43, 43)
+                .addComponent(tekrarHesaplaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(cikisYapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tytSonuclarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(tytSonuclarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(yksSonuclarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,23 +398,62 @@ public class SonuclarFrame extends javax.swing.JFrame {
                 .addComponent(tytSonuclarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(yksSonuclarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cikisYapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cikisYapButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_cikisYapButtonActionPerformed
+
+    private void cikisYapButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cikisYapButtonMouseExited
+        cikisYapButton.setBackground(cikisYapOriginalBgColor);
+        cikisYapButton.setForeground(Color.black);
+    }//GEN-LAST:event_cikisYapButtonMouseExited
+
+    private void cikisYapButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cikisYapButtonMouseEntered
+        this.cikisYapOriginalBgColor = cikisYapButton.getBackground();
+        cikisYapButton.setBackground(Color.black);
+        cikisYapButton.setForeground(Color.white);
+    }//GEN-LAST:event_cikisYapButtonMouseEntered
+
+    private void tekrarHesaplaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tekrarHesaplaButtonActionPerformed
+        setVisible(false);
+        OBPFrame obpFrame = new OBPFrame();
+        obpFrame.setVisible(true);
+    }//GEN-LAST:event_tekrarHesaplaButtonActionPerformed
+
+    private void tekrarHesaplaButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tekrarHesaplaButtonMouseExited
+        tekrarHesaplaButton.setBackground(tekrarHesaplaOriginalBgColor);
+        tekrarHesaplaButton.setForeground(Color.black);
+    }//GEN-LAST:event_tekrarHesaplaButtonMouseExited
+
+    private void tekrarHesaplaButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tekrarHesaplaButtonMouseEntered
+        this.tekrarHesaplaOriginalBgColor = tekrarHesaplaButton.getBackground();
+        tekrarHesaplaButton.setBackground(Color.black);
+        tekrarHesaplaButton.setForeground(Color.white);
+    }//GEN-LAST:event_tekrarHesaplaButtonMouseEntered
+
+    Color tekrarHesaplaOriginalBgColor;
+    
+    
+    Color cikisYapOriginalBgColor;
+    
     
     
     public static void main(String args[]) {
@@ -393,6 +489,7 @@ public class SonuclarFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cikisYapButton;
     private javax.swing.JTextField dilHamPuanField;
     private javax.swing.JTextField dilYerPuanField;
     private javax.swing.JTextField eAgirlikHamPuanField;
@@ -419,6 +516,7 @@ public class SonuclarFrame extends javax.swing.JFrame {
     private javax.swing.JTextField sayYerPuanField;
     private javax.swing.JTextField sozelHamPuanField;
     private javax.swing.JTextField sozelYerPuanField;
+    private javax.swing.JButton tekrarHesaplaButton;
     private javax.swing.JTextField tytHamPuanField;
     private javax.swing.JPanel tytSonuclarPanel;
     private javax.swing.JTextField tytYerPuanField;
