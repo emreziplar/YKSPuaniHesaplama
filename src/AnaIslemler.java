@@ -9,11 +9,12 @@ import javax.swing.JTextField;
 public class AnaIslemler //superClass
 {        
     public String uyariMesaji = "<html><b>UYARI:</b> Doğru ve Yanlış Sayıları Toplamı Soru Sayısını Geçemez</html>";
-    
+    //dogru ve yanlis sayilarinin toplami soru sayisini geciyorsa bu uyari mesaji kullanilacak
     
     private int dogru,yanlis;
     public void dogruYanlisGonder(JTextField dogruField , JTextField yanlisField)
-    {
+    {  
+        //gelen dogru yanlislari bu method ile kontrol edip gerekli islemlere devam ediyoruz
         String dogruAlani = dogruField.getText();
         String yanlisAlani = yanlisField.getText();
         
@@ -51,7 +52,7 @@ public class AnaIslemler //superClass
     
     
    public void verileriSifirla(JPanel anaPanel)
-    {
+    {   
         float deger = 0;
         for (Component c:anaPanel.getComponents())
         {
@@ -64,8 +65,8 @@ public class AnaIslemler //superClass
         }
     }
    
-   public void allKeyTyped(JPanel anaPanel)
-   {
+   public void allKeyTyped(JPanel anaPanel) //kutucuklara sadece sayi girilebilmesi icin yazilan method  
+   {                                        //(yalnizca gonderilen panel uzerindeki kutucuklar)
        for(Component c:anaPanel.getComponents()) 
        {
            if(c instanceof JTextField)
